@@ -15,5 +15,24 @@
     </div>
 @endsection
 @section('js')
-    <script src="{{URL::asset('js/register.js')}}"></script>
+<script>
+    $('#submit').on('click', () => {
+    let nama = $('#nama').val()
+    let email = $('#email').val()
+    let telepon = $('#telepon').val()
+
+    $.ajax("{{route('register')}}", {
+        type: 'POST',
+        data:
+        {
+            nama: nama,
+            email: email,
+            telepon: telepon
+        },
+        success: function (data) {
+            console.log(data)
+        }
+    })
+    })
+</script>
 @endsection

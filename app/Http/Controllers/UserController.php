@@ -13,6 +13,6 @@ class UserController extends Controller
 
     public function register(Request $request)
     {
-        return $request;
+        return \Response::json($request);
     }
 }
