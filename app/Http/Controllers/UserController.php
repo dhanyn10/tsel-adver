@@ -36,4 +36,26 @@ class UserController extends Controller
         }
         return response()->json($response);
     }
+
+    public function showLogin()
+    {
+        return view('login');
+    }
+
+    public function login(Request $request)
+    {
+        $email = $request->email;
+        $user = User::where('email', $email)->get();
+
+        if(count($user) == 0) {
+            $response = array(
+                'msg'   => 0
+            );
+        } else {
+            $response = array(
+                'msg'   => 1
+            );
+        }
+        return response()->json($response);
+    }
 }
