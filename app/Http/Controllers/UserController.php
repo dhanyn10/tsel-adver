@@ -24,15 +24,12 @@ class UserController extends Controller
         $id = $request->id;
         $data = User::where('id', $id)->get();
 
-        $code = 0;
-        $ms = null;
         if(count($data) > 0) {
-            return response()->json($data, $code);
+            return response()->json($data, 200);
         } else {
-
-        return response()->json([
-            'message' => 'data not found'
-        ], 404);
+            return response()->json([
+                'message' => 'data not found'
+            ], 404);
         }
     }
 

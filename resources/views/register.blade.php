@@ -41,7 +41,7 @@
                 } else if(data.status == 'exists') {
                     alert('data sudah ada')
                 } else if('created') {
-                    alert('Thankyou')
+                    alert('Thankyou!')
                 }
             }
         })
