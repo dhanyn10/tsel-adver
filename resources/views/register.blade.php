@@ -5,10 +5,12 @@
             <div class="card mt-3">
                 <div class="card-header">Register</div>
                 <div class="card-body">
-                    <input type="text" name="nama" id="nama" class="form-control mb-2" placeholder="nama">
-                    <input type="text" name="email" id="email" class="form-control mb-2" placeholder="email">
-                    <input type="text" name="telpon" id="telepon" class="form-control mb-2" placeholder="telp">
-                    <button type="button" class="btn btn-primary" id="submit">Kirim</button>
+                    <form id="register">
+                        <input type="text" name="nama" id="nama" class="form-control mb-2" placeholder="nama">
+                        <input type="text" name="email" id="email" class="form-control mb-2" placeholder="email">
+                        <input type="text" name="telpon" id="telepon" class="form-control mb-2" placeholder="telp">
+                        <button type="submit" class="btn btn-primary" id="submit">Kirim</button>
+                    </form>
                 </div>
             </div>
         </div>
@@ -16,23 +18,28 @@
 @endsection
 @section('js')
 <script>
-    $('#submit').on('click', () => {
-    let nama = $('#nama').val()
-    let email = $('#email').val()
-    let telepon = $('#telepon').val()
+    $('#register').on('submit', (evt) => {
+        evt.preventDefault()
+        let nama = $('#nama').val()
+        let email = $('#email').val()
+        let telepon = $('#telepon').val()
 
-    $.ajax("{{route('register')}}", {
-        type: 'POST',
-        data:
-        {
-            nama: nama,
-            email: email,
-            telepon: telepon
-        },
-        success: function (data) {
-            console.log(data)
-        }
-    })
+        $.ajax("{{route('register')}}", {
+            type: 'POST',
+            data:
+            {
+                nama: nama,
+                email: email,
+                telepon: telepon
+            },
+            success: function (data) {
+                if(data.msg == 1) {
+                    alert('Thankyou!')
+                } else {
+                    alert('data sudah ada')
+                }
+            }
+        })
     })
 </script>
 @endsection
