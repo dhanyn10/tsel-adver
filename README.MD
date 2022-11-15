@@ -15,7 +15,6 @@
 4. gunakan command `docker exec tsel-web composer dump-autoload` agar configurasi `.env` dapat dibaca sistem
 5. gunakan command `docker exec tsel-web php artisan migrate` untuk autogenerate tabel
 6. gunakan command `docker exec tsel-web php artisan db:seed` untuk mengisi tabel dengan data dummy
-7. gunakan command `docker exec tsel-web php artisan serve` agar apps running
 
 ## Petunjuk Penggunaan
 - halaman register untuk memasukkan data user baru. Contoh data adalah sebagai berikut:
