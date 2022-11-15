@@ -36,10 +36,12 @@
                 telepon: telepon
             },
             success: function (data) {
-                if(data.msg == 1) {
-                    alert('Thankyou!')
-                } else {
+                if(data.status == 'fails') {
+                    alert('input salah')
+                } else if(data.status == 'exists') {
                     alert('data sudah ada')
+                } else if('created') {
+                    alert('Thankyou')
                 }
             }
         })

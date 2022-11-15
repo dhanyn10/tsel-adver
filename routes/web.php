@@ -13,5 +13,5 @@ Route::get('register', [RegisterController::class, 'show'])->name('register');
 Route::get('login', [LoginController::class, 'show'])->name('login');
 Route::get('dasbor', [DasborController::class, 'show'])->name('dasbor');
 
-Route::post('register', [UserController::class, 'register']);
+Route::post('register', [RegisterController::class, 'register']);
 Route::post('login', [LoginController::class, 'login']);
