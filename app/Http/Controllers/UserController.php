@@ -47,7 +47,7 @@ class UserController extends Controller
         if($validasi->fails()) {
             return response()->json(['message' => 'wrong input'], 405);
         }
-        
+
         $nama = $request->nama;
         $email = $request->email;
         $telepon = $request->telepon;
@@ -73,6 +73,67 @@ class UserController extends Controller
         } else {
             $code = 405;
             $ms = "data already exists";
+        }
+
+        return response()->json(['message' => $ms], $code);
+    }
+
+    public function update(Request $request)
+    {
+        $validasi = Validator::make($request->all(), [
+            'nama'  => 'required',
+            'email' => 'required|email',
+            'telepon' => 'numeric|digits_between:11,13'
+        ]);
+
+        if($validasi->fails()) {
+            return response()->json(['message' => 'wrong input'], 405);
+        }
+        
+        $id = $request->id;
+        $nama = $request->nama;
+        $email = $request->email;
+        $telepon = $request->telepon;
+
+        $code = 0;
+        $ms = null;
+        $cekdata = User::where('id', $id)->get();
+        if(count($cekdata) > 0)
+        {
+            $cekemail = User::where('email', $email)->get();
+            if (count($cekemail) > 0) {
+                $code = 405;
+                $ms = "email already used";
+            } else {
+                User::where('id', $id)->update([
+                    'nama' => $nama,
+                    'email' => $email,
+                    'telepon' => $telepon
+                ]);
+                $code = 200;
+                $ms = "data updated";
+            }
+        } else {
+            $code = 404;
+            $ms = "data not found";
+        }
+
+        return response()->json(['message' => $ms], $code);
+    }
+
+
+    public function delete(Request $request)
+    {
+        $id = $request->id;
+        $cekdata = User::where('id', $id)->get();
+        if(count($cekdata) > 0)
+        {
+            User::where('id', $id)->delete();
+            $code = 200;
+            $ms = "data deleted";
+        } else {
+            $code = 404;
+            $ms = "id not found";
         }
 
         return response()->json(['message' => $ms], $code);
