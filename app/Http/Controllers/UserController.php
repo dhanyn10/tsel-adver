@@ -47,15 +47,15 @@ class UserController extends Controller
         $email = $request->email;
         $user = User::where('email', $email)->get();
 
-        if(count($user) == 0) {
-            $response = array(
-                'msg'   => 0
-            );
-        } else {
-            $response = array(
-                'msg'   => 1
-            );
+        $code = 0;
+        $nama = null;
+        if(count($user) > 0) {
+            $nama = $user->pluck('nama')->first();
+            $code = 1;
         }
-        return response()->json($response);
+        return response()->json([
+            'code' => $code,
+            'nama' => $nama
+        ]);
     }
 }

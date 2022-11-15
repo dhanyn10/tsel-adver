@@ -30,10 +30,17 @@
                 email: email
             },
             success: function (data) {
-                if(data.msg == 1) {
+                console.log(data)
+                if(data.code == 1) {
                     alert('Thankyou!')
+                    setCookie("nama", data.nama, 1)
+                    window.location = "{{route('dasbor')}}"
                 } else {
                     alert('data belum ada')
+                    const d = new Date()
+                    d.setTime(d.getTime())
+                    const last = d.toUTCString();
+                    setCookie("error", last, 1)
                 }
             }
         })
