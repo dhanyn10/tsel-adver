@@ -1,0 +1,28 @@
+version: '3.8'
+services:
+
+  web:
+    container_name: tsel-web
+    build:
+      context: .
+      dockerfile: Dockerfile
+    depends_on:
+     - db
+    ports:
+     - 8000:8000
+
+  db:
+    container_name: tsel-db
+    image: mysql
+    command: --default-authentication-plugin=mysql_native_password
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: password
+      MYSQL_DATABASE: data_form
+  
+  adminer:
+    container_name: tsel-adminer
+    image: adminer
+    restart: always
+    ports:
+      - 8080:8080
