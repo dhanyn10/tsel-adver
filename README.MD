@@ -2,11 +2,13 @@
 
 ## Petunjuk Instalasi
 ### Tanpa Docker
-1. install packages yang dibutuhkan laravel dengan command `composer install`
-2. buat database `data_form` di phpmyadmin
-3. jalankan fitur autogenerate tabel dengan command `php artisan migrate`
-4. jalankan fitur autofill data dummy dengan command `php artisan db:seed`
-5. jalankan apps dengan command `php artisan serve`
+
+1. siapkan redis(gunakan versi [1.0.0](https://github.com/dhanyn10/tsel-adver/releases/tag/v1.0.0) jika tidak menggunakan redis)
+2. install packages yang dibutuhkan laravel dengan command `composer install`
+3. buat database `data_form` di phpmyadmin
+4. jalankan fitur autogenerate tabel dengan command `php artisan migrate`
+5. jalankan fitur autofill data dummy dengan command `php artisan db:seed`
+6. jalankan apps dengan command `php artisan serve`
 
 ### Dengan Docker
 1. ganti isi file `.env` dengan `.env.docker`
