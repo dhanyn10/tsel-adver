@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Redis;
 use App\Models\User;
 use Validator;
 
@@ -10,9 +11,17 @@ class UserController extends Controller
 {
     public function showAll()
     {
-        $data = User::all();
-        if(count($data) > 0) {
-            return response()->json($data, 200);
+        $count = User::count();
+        if($count > 0) {
+            $redisData = json_decode(Redis::get('allUser'));
+            if($redisData == 0) {
+                $data = User::all();
+                // auto expired dalam 1 menit
+                Redis::set('allUser', json_encode($data), 'EX', 60);
+                return response()->json($data, 200);
+            } else {
+                return response()->json($redisData, 200);
+            }
         } else {
             return response()->json([
                 'message' => 'data not exist'
