@@ -19,7 +19,13 @@ services:
     environment:
       MYSQL_ROOT_PASSWORD: password
       MYSQL_DATABASE: data_form
-  
+
+  redisdb:
+    container_name: redisdb
+    image: redis:7.0
+    ports:
+      - 6666:6379
+
   adminer:
     container_name: tsel-adminer
     image: adminer

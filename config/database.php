@@ -68,7 +68,7 @@ return [
     'migrations' => 'migrations',
     'redis' => [
 
-        'client' => env('REDIS_CLIENT', 'phpredis'),
+        'client' => env('REDIS_CLIENT'),
 
         'options' => [
             'cluster' => env('REDIS_CLUSTER', 'redis'),
