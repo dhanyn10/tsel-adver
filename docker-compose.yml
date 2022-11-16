@@ -24,8 +24,8 @@ services:
     container_name: redisdb
     image: redis:7.0
     ports:
-      - 6379:6379
-      
+      - 6666:6379
+
   adminer:
     container_name: tsel-adminer
     image: adminer
