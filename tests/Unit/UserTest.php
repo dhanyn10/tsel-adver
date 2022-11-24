@@ -38,4 +38,17 @@ class UserTest extends TestCase
             'created_at', 'updated_at'
         ]);
     }
+
+    public function test_PostData()
+    {
+        $response = $this->postJson('/api/users', [
+            'nama'  => fake()->name('male'),
+            'email' => fake()->email(),
+            'telepon'  => rand(100000000000, 200000000000),
+        ]);
+        $response->assertStatus(200);
+        $response->assertSeeText([
+            'message', 'data created'
+        ]);
+    }
 }
