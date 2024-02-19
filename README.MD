@@ -1,5 +1,5 @@
-# Tsel
-
+# Tsel 
+[![PHPUnit](https://github.com/dhanyn10/tsel-adver/actions/workflows/laravel.yml/badge.svg)](https://github.com/dhanyn10/tsel-adver/actions/workflows/laravel.yml)
 ## Petunjuk Instalasi
 ### Tanpa Docker
 
