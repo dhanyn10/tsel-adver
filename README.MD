@@ -27,7 +27,11 @@
     docker exec tsel-web php artisan migrate
     ```
     untuk autogenerate tabel
-6. gunakan command `docker exec tsel-web php artisan db:seed` untuk mengisi tabel dengan data dummy
+6. gunakan command
+    ```
+    docker exec tsel-web php artisan db:seed
+    ```
+    untuk mengisi tabel dengan data dummy
 
 ## Petunjuk Penggunaan
 - halaman register untuk memasukkan data user baru. Contoh data adalah sebagai berikut:
