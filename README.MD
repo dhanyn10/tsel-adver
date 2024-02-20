@@ -12,10 +12,21 @@
 
 ### Dengan Docker
 1. ganti isi file `.env` dengan `.env.docker`
-2. build apps dengan command `docker-compose up -d`
+2. build apps dengan command 
+    ```
+    docker-compose up -d
+    ```
 3. tunggu selama >= 10 detik
-4. gunakan command `docker exec tsel-web composer dump-autoload` agar configurasi `.env` dapat dibaca sistem
-5. gunakan command `docker exec tsel-web php artisan migrate` untuk autogenerate tabel
+4. gunakan command
+    ```
+    docker exec tsel-web composer dump-autoload
+    ```
+    agar configurasi `.env` dapat dibaca sistem
+5. gunakan command
+    ```
+    docker exec tsel-web php artisan migrate
+    ```
+    untuk autogenerate tabel
 6. gunakan command `docker exec tsel-web php artisan db:seed` untuk mengisi tabel dengan data dummy
 
 ## Petunjuk Penggunaan
